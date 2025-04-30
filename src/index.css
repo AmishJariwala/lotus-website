@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    height: 100%;
+  }
+
+  body {
+    @apply bg-dark text-white min-h-screen;
+    margin: 0;
+    padding: 0;
+  }
+
+  section {
+    @apply w-full;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-5 py-2.5 rounded-full font-medium transition-all duration-200 text-sm md:text-base md:px-6 md:py-3 flex items-center justify-center;
+  }
+
+  .btn-primary {
+    @apply bg-primary-light text-dark hover:bg-primary hover:text-white;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-light text-primary-light hover:bg-primary-light/10;
+  }
+
+  .container-custom {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-md md:max-w-3xl lg:max-w-5xl;
+  }
+
+  /* iPhone 14 Pro ratio optimization */
+  .iphone-frame {
+    @apply aspect-[402/874] w-full max-w-[280px] mx-auto;
+  }
+}

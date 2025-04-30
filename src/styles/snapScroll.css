@@ -1,0 +1,52 @@
+/* Snap Scrolling Styles */
+
+/* Only apply snap scrolling on desktop */
+@media (min-width: 768px) {
+  .snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 64px; /* Height of the header */
+    background-color: #121212; /* Dark background color */
+  }
+}
+
+/* Mobile styles - enable snap scrolling */
+@media (max-width: 767px) {
+  .snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 100vh;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 64px; /* Height of the header */
+    padding-bottom: 2rem;
+    background-color: #121212; /* Dark background color */
+  }
+}
+
+/* Common styles for both mobile and desktop */
+.snap-section > * {
+  width: 100%;
+  flex: 1;
+}

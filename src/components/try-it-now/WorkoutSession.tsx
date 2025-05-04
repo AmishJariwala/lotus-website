@@ -14,8 +14,8 @@ const WorkoutSession = ({ workout, onComplete, onCancel }: WorkoutSessionProps) 
 
   // Timer effect
   useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
-    
+    let interval: ReturnType<typeof setInterval> | null = null;
+
     if (isActive) {
       interval = setInterval(() => {
         setTimer(timer => timer + 1);
@@ -23,7 +23,7 @@ const WorkoutSession = ({ workout, onComplete, onCancel }: WorkoutSessionProps) 
     } else if (interval) {
       clearInterval(interval);
     }
-    
+
     return () => {
       if (interval) clearInterval(interval);
     };
@@ -45,7 +45,7 @@ const WorkoutSession = ({ workout, onComplete, onCancel }: WorkoutSessionProps) 
         }
         return exercise;
       });
-      
+
       return { ...prev, exercises: updatedExercises };
     });
   };
@@ -79,18 +79,18 @@ const WorkoutSession = ({ workout, onComplete, onCancel }: WorkoutSessionProps) 
       <div className="flex-grow overflow-y-auto p-4">
         <div className="space-y-4">
           {currentWorkout.exercises.map((exercise) => (
-            <div 
-              key={exercise.id} 
+            <div
+              key={exercise.id}
               className="bg-dark-lighter rounded-lg p-4 border border-gray-700"
             >
               <h3 className="text-white font-semibold mb-2">{exercise.name}</h3>
-              
+
               {exercise.weight && (
                 <div className="text-gray-300 text-sm mb-2">
                   Weight: {exercise.weight.value}{exercise.weight.unit}
                 </div>
               )}
-              
+
               <div className="flex items-center justify-between mb-3">
                 <span className="text-gray-300 text-sm">
                   {exercise.sets} sets × {exercise.reps} reps
@@ -99,7 +99,7 @@ const WorkoutSession = ({ workout, onComplete, onCancel }: WorkoutSessionProps) 
                   {exercise.completed}/{exercise.sets} sets
                 </span>
               </div>
-              
+
               <div className="flex flex-wrap gap-2 mt-2">
                 {Array.from({ length: exercise.sets }).map((_, index) => (
                   <button
@@ -107,8 +107,8 @@ const WorkoutSession = ({ workout, onComplete, onCancel }: WorkoutSessionProps) 
                     onClick={() => index === exercise.completed ? completeSet(exercise.id) : null}
                     disabled={index !== exercise.completed}
                     className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      index < exercise.completed 
-                        ? 'bg-primary-light text-dark' 
+                      index < exercise.completed
+                        ? 'bg-primary-light text-dark'
                         : index === exercise.completed
                           ? 'bg-dark-lighter border-2 border-primary-light/50 text-white'
                           : 'bg-dark-lighter border border-gray-600 text-gray-500'

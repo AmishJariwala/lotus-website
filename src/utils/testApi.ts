@@ -36,7 +36,7 @@ export async function testProxyApi() {
     }
   } catch (error) {
     console.error('Proxy API test failed:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 }
 
@@ -75,6 +75,6 @@ export async function testApi() {
     }
   } catch (error) {
     console.error('API test failed:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : 'Unknown error' };
   }
 }

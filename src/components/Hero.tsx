@@ -67,7 +67,10 @@ const Hero = () => {
                   <div className="h-full bg-dark p-3">
                     {/* Header */}
                     <div className="flex justify-between items-center mb-4">
-                      <h2 className="text-white text-xl font-semibold">Lotus</h2>
+                      <div className="flex items-center">
+                        <img src="/logo.png" alt="Lotus Logo" className="h-6 w-6 mr-2" />
+                        <h2 className="text-white text-xl font-semibold">Lotus</h2>
+                      </div>
                       <div className="flex space-x-2">
                         <div className="text-primary-light rounded-full p-1">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
